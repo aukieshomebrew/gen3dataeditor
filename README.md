@@ -33,7 +33,7 @@ How to compile:
   
     1. Clone this project in a directory.
     2. Go to the project directory.
-    3. Use 'nuget restore' to download dependencies.
+    3. Use 'nuget restore' to download dependencies. (nuget download: https://dist.nuget.org/win-x86-commandline/latest/nuget.exe)
     4. Use msbuild to compile binaries.
     5. Go to the ouput directory and you can run the program.
     
