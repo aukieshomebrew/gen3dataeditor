@@ -84,7 +84,10 @@ namespace gen3dataeditor
                 RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
                 string line = romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex));
                 Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
-                Console.WriteLine("Value: {0}", line);
+                Console.Write("Value: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(line);
+                Console.ResetColor();
                 romeditor = null;
                 return 0;
             }
@@ -104,11 +107,17 @@ namespace gen3dataeditor
                     Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                     if(opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value: 0x{0:X}", write32);
+                        Console.Write("Value: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", write32);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value: {0}", write32);
+                        Console.Write("Value: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", write32);
+                        Console.ResetColor();
                     }
                     
                     romeditor = null;
@@ -122,11 +131,17 @@ namespace gen3dataeditor
                     Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                     if(opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value: 0x{0:X}", write16);
+                        Console.Write("Value: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", write16);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value: {0}", write16);
+                        Console.Write("Value: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", write16);
+                        Console.ResetColor();
                     }
                     romeditor = null;
                     return 0;
@@ -140,11 +155,17 @@ namespace gen3dataeditor
                     Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                     if(opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value: 0x{0:X}", writebyte);
+                        Console.Write("Value: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", writebyte);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value: {0}", writebyte);
+                        Console.Write("Value: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", writebyte);
+                        Console.ResetColor();
                     }
                     romeditor = null;
                     return 0;
@@ -158,9 +179,17 @@ namespace gen3dataeditor
 
                 Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
 
-                Console.WriteLine("Value before: {0}", romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex)));
+                Console.Write("Value before: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("{0}", romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex)));
+                Console.ResetColor();
+
                 romeditor.SetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex, romeditor.ConvertStringToByteArray(opt.ArgSetValueString), true);
-                Console.WriteLine("Value after: {0}", romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex)));
+
+                Console.Write("Value after: ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("{0}", romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex)));
+                Console.ResetColor();
 
                 romeditor = null;
                 return 0;
@@ -185,11 +214,17 @@ namespace gen3dataeditor
                 {
                     if(opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value before: 0x{0:X}", write16);
+                        Console.Write("Value before: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", write32);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value before: {0}", write16);
+                        Console.Write("Value before: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", write32);
+                        Console.ResetColor();
                     }
                 }
                 if (!romeditor.ConvertByteArrayToInt16(array, out write16))
@@ -200,11 +235,17 @@ namespace gen3dataeditor
                 {
                     if(opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value before: 0x{0:X}", write16);
+                        Console.Write("Value: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", write16);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value before: {0}", write16);
+                        Console.Write("Value before: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", write16);
+                        Console.ResetColor();
                     }
                 }
                 if (!romeditor.ConvertByteArrayToByte(array, out writebyte))
@@ -215,11 +256,17 @@ namespace gen3dataeditor
                 {
                     if (opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value before: 0x{0:X}", writebyte);
+                        Console.Write("Value before: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", writebyte);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value before: {0}", writebyte);
+                        Console.Write("Value before: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", writebyte);
+                        Console.ResetColor();
                     }
                 }
 
@@ -234,11 +281,17 @@ namespace gen3dataeditor
                 {
                     if(opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value after: 0x{0:X}", write32);
+                        Console.Write("Value after: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", write32);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value after: {0}", write32);
+                        Console.Write("Value after: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", write32);
+                        Console.ResetColor();
                     }
                 }
                 if (!romeditor.ConvertByteArrayToInt16(array, out write16))
@@ -249,11 +302,17 @@ namespace gen3dataeditor
                 {
                     if (opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value after: 0x{0:X}", write16);
+                        Console.Write("Value after: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", write16);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value after: {0}", write16);
+                        Console.Write("Value after: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", write16);
+                        Console.ResetColor();
                     }
                 }
                 if (!romeditor.ConvertByteArrayToByte(array, out writebyte))
@@ -264,11 +323,17 @@ namespace gen3dataeditor
                 {
                     if (opt.ArgPrintHex)
                     {
-                        Console.WriteLine("Value after: 0x{0:X}", writebyte);
+                        Console.Write("Value after: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("0x{0:X}", writebyte);
+                        Console.ResetColor();
                     }
                     else
                     {
-                        Console.WriteLine("Value after: {0}", writebyte);
+                        Console.Write("Value after: ");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("{0}", writebyte);
+                        Console.ResetColor();
                     }
                 }
 
