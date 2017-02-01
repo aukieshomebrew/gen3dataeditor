@@ -271,6 +271,8 @@ namespace gen3dataeditor
                 }
 
                 romeditor.SetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex, romeditor.ConvertIntToByteArray(opt.ArgSetValueInt), false);
+
+                array = romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                 Int16 afterwrite16 = 0;
                 Int32 afterwrite32 = 0;
                 byte afterwritebyte = 0;
