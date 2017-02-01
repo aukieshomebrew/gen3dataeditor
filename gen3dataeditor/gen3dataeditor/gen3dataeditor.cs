@@ -271,11 +271,11 @@ namespace gen3dataeditor
                 }
 
                 romeditor.SetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex, romeditor.ConvertIntToByteArray(opt.ArgSetValueInt), false);
-                write16 = 0;
-                write32 = 0;
-                writebyte = 0;
+                Int16 afterwrite16 = 0;
+                Int32 afterwrite32 = 0;
+                byte afterwritebyte = 0;
 
-                if (!romeditor.ConvertByteArrayToInt32(array, out write32))
+                if (!romeditor.ConvertByteArrayToInt32(array, out afterwrite32))
                 {
 
                 }
@@ -285,18 +285,18 @@ namespace gen3dataeditor
                     {
                         Console.Write("Value after: ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("0x{0:X}", write32);
+                        Console.WriteLine("0x{0:X}", afterwrite32);
                         Console.ResetColor();
                     }
                     else
                     {
                         Console.Write("Value after: ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("{0}", write32);
+                        Console.WriteLine("{0}", afterwrite32);
                         Console.ResetColor();
                     }
                 }
-                if (!romeditor.ConvertByteArrayToInt16(array, out write16))
+                if (!romeditor.ConvertByteArrayToInt16(array, out afterwrite16))
                 {
 
                 }
@@ -306,18 +306,18 @@ namespace gen3dataeditor
                     {
                         Console.Write("Value after: ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("0x{0:X}", write16);
+                        Console.WriteLine("0x{0:X}", afterwrite16);
                         Console.ResetColor();
                     }
                     else
                     {
                         Console.Write("Value after: ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("{0}", write16);
+                        Console.WriteLine("{0}", afterwrite16);
                         Console.ResetColor();
                     }
                 }
-                if (!romeditor.ConvertByteArrayToByte(array, out writebyte))
+                if (!romeditor.ConvertByteArrayToByte(array, out afterwritebyte))
                 {
 
                 }
@@ -327,14 +327,14 @@ namespace gen3dataeditor
                     {
                         Console.Write("Value after: ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("0x{0:X}", writebyte);
+                        Console.WriteLine("0x{0:X}", afterwritebyte);
                         Console.ResetColor();
                     }
                     else
                     {
                         Console.Write("Value after: ");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("{0}", writebyte);
+                        Console.WriteLine("{0}", afterwritebyte);
                         Console.ResetColor();
                     }
                 }
