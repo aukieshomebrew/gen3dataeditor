@@ -3,6 +3,7 @@ using CommandLine;
 using CommandLine.Text;
 using System;
 using System.IO;
+using System.Globalization;
 
 namespace gen3dataeditor
 {
@@ -74,7 +75,15 @@ namespace gen3dataeditor
                 else
                 {
                     Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
-                    Console.WriteLine("Value: {0}", write32);
+                    if(opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value: 0x{0:X}", write32);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value: {0}", write32);
+                    }
+                    
                     romeditor = null;
                     return 0;
                 }
@@ -84,7 +93,14 @@ namespace gen3dataeditor
                 else
                 {
                     Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
-                    Console.WriteLine("Value: {0}", write16);
+                    if(opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value: 0x{0:X}", write16);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value: {0}", write16);
+                    }
                     romeditor = null;
                     return 0;
                 }
@@ -95,14 +111,21 @@ namespace gen3dataeditor
                 else
                 {
                     Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
-                    Console.WriteLine("Value: {0}", writebyte);
+                    if(opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value: 0x{0:X}", writebyte);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value: {0}", writebyte);
+                    }
                     romeditor = null;
                     return 0;
                 }
 
             }
 
-            else if (opt.ArgSetValueString != string.Empty)
+            else if (!string.IsNullOrWhiteSpace(opt.ArgSetValueString))
             {
                 RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
 
@@ -133,7 +156,14 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.Write("Value before: ", write16);
+                    if(opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value before: 0x{0:X}", write16);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value before: {0}", write16);
+                    }
                 }
                 if (!romeditor.ConvertByteArrayToInt16(array, out write16))
                 {
@@ -141,7 +171,14 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.Write("Value before: ", write16);
+                    if(opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value before: 0x{0:X}", write16);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value before: {0}", write16);
+                    }
                 }
                 if (!romeditor.ConvertByteArrayToByte(array, out writebyte))
                 {
@@ -149,7 +186,14 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.Write("Value before: ", writebyte);
+                    if (opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value before: 0x{0:X}", writebyte);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value before: {0}", writebyte);
+                    }
                 }
 
                 romeditor.SetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex, romeditor.ConvertIntToByteArray(opt.ArgSetValueInt));
@@ -161,7 +205,14 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.Write("Value after: ", write16);
+                    if(opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value after: 0x{0:X}", write32);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value after: {0}", write32);
+                    }
                 }
                 if (!romeditor.ConvertByteArrayToInt16(array, out write16))
                 {
@@ -169,7 +220,14 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.Write("Value after: ", write16);
+                    if (opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value after: 0x{0:X}", write16);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value after: {0}", write16);
+                    }
                 }
                 if (!romeditor.ConvertByteArrayToByte(array, out writebyte))
                 {
@@ -177,7 +235,14 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.Write("Value after: ", writebyte);
+                    if (opt.ArgPrintHex)
+                    {
+                        Console.WriteLine("Value after: 0x{0:X}", writebyte);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Value after: {0}", writebyte);
+                    }
                 }
 
 
@@ -220,9 +285,11 @@ namespace gen3dataeditor
         [Option("offset", HelpText = "Specify offset name", DefaultValue = "name")]
         public string ArgName { get; set; }
 
-
         [Option("index", HelpText = "Specify index number.", DefaultValue = 1, Required = true)]
         public int ArgIndex { get; set; }
+
+        [Option('x', "print-hex", HelpText = "Print interger as hexnumber", DefaultValue = false, Required = false)]
+        public bool ArgPrintHex { get; set; }
 
         [HelpOption]
         public string GetUsage()

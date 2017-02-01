@@ -105,7 +105,7 @@
     <movenamestruct>
       <global>
         <offset name="globaloffset" offset="0x081F8320" gamecode="AXVE" size="0x0D"/>
-        <offset name="globaloffset" offset="0x081F82B0" gamecode="AXPE" size="0x0D"/>
+        <offset name="globaloffset" offset="0x081F82FA" gamecode="AXPE" size="0x0D"/>
         <offset name="globaloffset" offset="0x0831977C" gamecode="BPEE" size="0x0D"/>
         <offset name="globaloffset" offset="0x08247094" gamecode="BPRE" size="0x0D"/>
         <offset name="globaloffset" offset="0x08247070" gamecode="BPGE" size="0x0D"/>

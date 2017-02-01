@@ -64,6 +64,8 @@ namespace gen3dataeditor
             Int16 globalsize = GetGlobalSizeByGameCode(structname, GetGameCode());
             Int32 pos = global + offset + (index * globalsize) - 0x8000000;
             byte[] bytes;
+            byte[] empty = new byte[size];
+
             using (BinaryWriter binarywriter = new BinaryWriter(File.OpenWrite(rompath)))
             {
                 binarywriter.BaseStream.Position = pos;
@@ -73,7 +75,7 @@ namespace gen3dataeditor
                 binarywriter.BaseStream.Position = pos;
 
                 binarywriter.Write(newvalue, 0, newvalue.Length);
-                
+
             }
 
          
@@ -82,7 +84,7 @@ namespace gen3dataeditor
         public bool ConvertByteArrayToInt32(byte[] array, out Int32 ret)
         {
             
-            if(array.Length != 4)
+            if(array.Length > 4)
             {
                 ret = 0;
                 return false;
@@ -99,7 +101,7 @@ namespace gen3dataeditor
         public bool ConvertByteArrayToInt16(byte[] array, out Int16 ret)
         {
             ret = 0;
-            if(array.Length != 2)
+            if(array.Length > 2)
             {
                 ret = 0;
                 return false;
