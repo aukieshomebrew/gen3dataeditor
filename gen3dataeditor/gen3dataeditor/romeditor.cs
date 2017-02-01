@@ -47,6 +47,7 @@ namespace gen3dataeditor
             {
                 binaryreader.BaseStream.Seek(pos, SeekOrigin.Begin);
                 ret = binaryreader.ReadBytes(size);
+                
 
             }
 
@@ -69,13 +70,27 @@ namespace gen3dataeditor
 
             using (BinaryWriter binarywriter = new BinaryWriter(File.OpenWrite(rompath)))
             {
-                binarywriter.BaseStream.Position = pos;
-                
-                binarywriter.Write(newvalue, 0, newvalue.Length);
+                Int32 j = 0;
+                for (Int32 i = pos; i < i + newvalue.Length; i++, j++)
+                {
+                    binarywriter.BaseStream.Position = i;
 
+                    binarywriter.Write(newvalue[j]);
+                }
+                
+                Int32 k = pos + newvalue.Length;
+
+                for (Int32 i = k; i < k + size; i++)
+                {
+                    binarywriter.BaseStream.Position = i;
+                    binarywriter.Write(0x00);
+                }
+                
+                
                 binarywriter.BaseStream.Position = pos + newvalue.Length;
                 byte[] remaining = new byte[size - newvalue.Length];
                 binarywriter.Write(remaining, 0, remaining.Length);
+                binarywriter.Flush();
 
             }
 
