@@ -45,6 +45,11 @@ namespace gen3dataeditor
 
 
             game = gamecoder.GetGameName();
+
+            
+            string gamecodes = gamecoder.GetGameCode();
+
+            gamecoder = null;
             
             if (string.IsNullOrEmpty(game))
             {
@@ -56,15 +61,15 @@ namespace gen3dataeditor
 
             if (opt.ArgListStruct)
             {
-                main.ListStruct(gamecoder.GetGameCode(), opt);
-                gamecoder = null;
+                main.ListStruct(gamecodes, opt);
+                
                 return 0;
             }
 
             if(!string.IsNullOrWhiteSpace(opt.ArgListOffsets))
             {
                 main.ListOffsets(opt.ArgListOffsets, opt);
-                gamecoder = null;
+             
                 return 0;
                
             }
