@@ -63,18 +63,18 @@ namespace gen3dataeditor
             Int16 size = GetValueSizeByName(structname, offsetname);
             Int16 globalsize = GetGlobalSizeByGameCode(structname, GetGameCode());
             Int32 pos = global + offset + (index * globalsize) - 0x8000000;
-            byte[] bytes;
+            
             
             
 
             using (BinaryWriter binarywriter = new BinaryWriter(File.OpenWrite(rompath)))
             {
                 binarywriter.BaseStream.Position = pos;
-                bytes = new byte[size];
-                binarywriter.Write(bytes, 0, bytes.Length);
+                
+                binarywriter.Write(newvalue, 0, newvalue.Length);
 
-                binarywriter.BaseStream.Position = pos + bytes.Length;
-                byte[] remaining = new byte[size - bytes.Length];
+                binarywriter.BaseStream.Position = pos + newvalue.Length;
+                byte[] remaining = new byte[size - newvalue.Length];
                 binarywriter.Write(remaining, 0, remaining.Length);
 
             }
