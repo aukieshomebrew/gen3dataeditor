@@ -429,6 +429,9 @@ namespace gen3dataeditor
         [Option("list-offsets", HelpText = "List all offsets in a structure in the data.xml file.")]
         public string ArgListOffsets{ get; set; }
 
+      
+
+
 
         [HelpOption]
         public string GetUsage()
@@ -447,12 +450,7 @@ namespace gen3dataeditor
 
             return help;
 
-
-
         }
-
-
-        
 
     }
 

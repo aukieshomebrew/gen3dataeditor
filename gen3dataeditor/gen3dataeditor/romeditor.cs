@@ -80,19 +80,38 @@ namespace gen3dataeditor
                     binarywriter.BaseStream.Position = pos + newvalue.Length;
                     binarywriter.Write(zero);
                 }
-              
-                
-
-                
-                
-                
-             
 
             }
 
          
         }
 
+        /*
+        public byte[] GetDescriptionArrayByOffset(Int32 offset)
+        {
+            byte[] ret = new byte[150];
+
+            binaryreader = new BinaryReader(File.OpenRead(rompath));
+            Int32 pos = offset - 0x8000000;
+   
+            //byte temp = 0;
+            int i = 0;
+            byte temp = 0x0;
+            while (i < 150)
+            {
+                binaryreader.BaseStream.Seek(pos, SeekOrigin.Begin);
+                temp = binaryreader.ReadByte();
+                if (temp == 0xFF)
+                {
+                    break;
+                }
+                pos++;
+            }
+
+            return ret;
+        }
+
+        */
         public bool ConvertByteArrayToInt32(byte[] array, out Int32 ret)
         {
             
@@ -185,6 +204,8 @@ namespace gen3dataeditor
         {
             return GetListOfAvailableOffsets(structname);
         }
+
+
 
     }
 

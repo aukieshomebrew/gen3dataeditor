@@ -43,7 +43,7 @@
     <pokedexdatastruct>
 
       <global>
-
+        <!--TODO: ruby and sapphire offsets here.-->
 
         <offset name="globaloffset" offset="0x083DB028" gamecode="BPRE" size="0x24"/>
         <offset name="globaloffset" offset="0x083DAE64" gamecode="BPGE" size="0x24"/>
@@ -115,7 +115,20 @@
         <offset name="name"  offset="0x00" size="0x0D"/>
       </struct>
     </movenamestruct>
+
+    <itemdescriptionstruct>
+      <global>
+        <offset name="globaloffset" offset="0x0857FE73" gamecode="BPEE" size="0x33"/>
+      </global>
+      
+      <struct>
+        <offset name="description" offset="0x00" size="0x33"/>
+      </struct>
+    </itemdescriptionstruct>
+    
   </structs>
+
+
 
   <encoding-table>
 
@@ -191,6 +204,9 @@
     <encoding hex="0xAB" ascii="!"/>
     <encoding hex="0xAC" ascii="?"/>
 
+    <encoding hex="0xAD" ascii="."/>
+    <!--<encoding hex="0xFF" ascii="-"/>--> 
+    
     <encoding hex="0x1B" ascii="é"/>
 
   </encoding-table>
