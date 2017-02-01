@@ -8,25 +8,31 @@ How to use:
         [--get-value-string] [--get-value-int] [--set-value-string <string>]
         [--set-value-int <integer>]
 
-        -f, --rom-file        Required. Path to ROM file.
+                -f, --rom-file        Required. Path to ROM file.
 
-        -d, --xml-file        (Default: data.xml) Path to XML file.
+                -d, --xml-file        (Default: data.xml) Path to XML file.
 
-        --get-value-string    Gets a value string.
+                --get-value-string    Gets a value string.
 
-        --set-value-string    Sets value to string
+                --set-value-string    Sets value to string
 
-        --get-value-int       Gets a value integer.
+                --get-value-int       Gets a value integer.
 
-        --set-value-int       (Default: -1) Sets value to int
+                --set-value-int       (Default: -1) Sets value to int
 
-        --struct              Required. (Default: itemdatastruct) Specify structname.
+                --struct              (Default: itemdatastruct) Specify structname.
+        
+                --offset              (Default: name) Specify offset name
+        
+                --index               (Default: 1) Specify index number.
 
-        --name                (Default: name) Specify offset name
+                -x, --print-hex       (Default: False) Print integer as hexnumber
 
-        --index               Required. (Default: 1) Specify index number.
+                --list-structs        List all structs in the data.xml file.
 
-        --help                Display this help screen.
+                --list-offsets        List all offsets in a structure in the data.xml file.
+
+                --help                Display this help screen.
     
   
 How to compile:
