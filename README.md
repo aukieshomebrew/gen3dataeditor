@@ -39,7 +39,9 @@ How to compile:
     
  About the data.xml file:
   
-    1. The data.xml file defines all offsets and memory adresses of the games.
-    2. It also defines the supported gamecodes.
+    1. The data.xml file defines all offsets and memory adresses of the games + supported gamecodes.
+    2. It also defines the structnames used in the program.
+    3. You can edit the data.xml file, but be careful: Setting wrong offsets in the rom could break the game.
+    
     
     
