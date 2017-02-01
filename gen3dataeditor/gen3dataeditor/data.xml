@@ -119,7 +119,6 @@
 
   <encoding-table>
 
-    <encoding hex="0x06" ascii="é"/>
 
     <encoding hex="0x00" ascii=" "/>
     <encoding hex="0xBB" ascii="A"/>
