@@ -73,7 +73,7 @@ namespace gen3dataeditor
                 bytes = new byte[size];
                 binarywriter.Write(bytes, 0, size);
 
-                binarywriter.BaseStream.Position = pos;
+                binarywriter.BaseStream.Position = pos + newvalue.Length;
 
                 binarywriter.Write(remaining, 0, remaining.Length);
 
