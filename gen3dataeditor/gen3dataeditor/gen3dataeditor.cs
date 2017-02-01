@@ -271,7 +271,9 @@ namespace gen3dataeditor
                 }
 
                 romeditor.SetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex, romeditor.ConvertIntToByteArray(opt.ArgSetValueInt), false);
-
+                write16 = 0;
+                write32 = 0;
+                writebyte = 0;
 
                 if (!romeditor.ConvertByteArrayToInt32(array, out write32))
                 {
