@@ -77,19 +77,17 @@ namespace gen3dataeditor
 
                     binarywriter.Write(newvalue[j]);
                 }
-                
-                Int32 k = pos + newvalue.Length;
+                byte[] zero = new byte[size - newvalue.Length];
 
-                for (Int32 i = k; i < k + size; i++)
-                {
-                    binarywriter.BaseStream.Position = i;
-                    binarywriter.Write(0x00);
-                }
-                
-                
+
                 binarywriter.BaseStream.Position = pos + newvalue.Length;
-                byte[] remaining = new byte[size - newvalue.Length];
-                binarywriter.Write(remaining, 0, remaining.Length);
+                binarywriter.Write(zero);
+                
+
+                
+                
+                
+             
                 binarywriter.Flush();
 
             }
