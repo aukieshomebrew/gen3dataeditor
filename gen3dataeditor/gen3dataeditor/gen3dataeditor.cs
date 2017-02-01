@@ -290,7 +290,10 @@ namespace gen3dataeditor
 
             List<string> list = romeditor.GetStructList();
 
-            foreach(string str in list)
+            Console.WriteLine("Structures: ");
+            Console.WriteLine();
+
+            foreach (string str in list)
             {
                 Console.WriteLine(str);
             }
@@ -304,7 +307,8 @@ namespace gen3dataeditor
             RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
 
             List<string> list = romeditor.GetOffsetList(structname);
-
+            Console.WriteLine("Offsets in: {0}", structname);
+            Console.WriteLine();
             foreach (string str in list)
             {
                 Console.WriteLine(str);
@@ -350,7 +354,7 @@ namespace gen3dataeditor
         [Option('x', "print-hex", HelpText = "Print integer as hexnumber", DefaultValue = false, Required = false)]
         public bool ArgPrintHex { get; set; }
 
-        [Option("list-structures", HelpText = "List all structures in the data.xml file.")]
+        [Option("list-structs", HelpText = "List all structs in the data.xml file.")]
         public bool ArgListStruct { get; set; }
 
         [Option("list-offsets", HelpText = "List all offsets in a structure in the data.xml file.")]
