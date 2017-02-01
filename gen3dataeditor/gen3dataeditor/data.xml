@@ -43,8 +43,8 @@
     <pokedexdatastruct>
 
       <global>
-        <offset name="globaloffset" offset="0x083B1858" gamecode="AXVE" size="0x24"/>
-        <offset name="globaloffset" offset="0x083C55BC" gamecode="AXPE" size="0x24"/>
+
+
         <offset name="globaloffset" offset="0x083DB028" gamecode="BPRE" size="0x24"/>
         <offset name="globaloffset" offset="0x083DAE64" gamecode="BPGE" size="0x24"/>
       </global>
@@ -91,7 +91,7 @@
 
     <pokemonnamestruct>
       <global>
-        <offset name="globaloffset" offset="0x081F7184" gamecode="AXVE" size="0x0B"/>
+        <offset name="globaloffset" offset="0x081F8354" gamecode="AXVE" size="0x0B"/>
         <offset name="globaloffset" offset="0x081F70FC" gamecode="AXPE" size="0x0B"/>
         <offset name="globaloffset" offset="0x083185C8" gamecode="BPEE" size="0x0B"/>
         <offset name="globaloffset" offset="0x08254784" gamecode="BPRE" size="0x0B"/>
@@ -104,7 +104,7 @@
 
     <movenamestruct>
       <global>
-        <offset name="globaloffset" offset="0x081F8354" gamecode="AXVE" size="0x0D"/>
+        <offset name="globaloffset" offset="0x081F8338" gamecode="AXVE" size="0x0D"/>
         <offset name="globaloffset" offset="0x081F82FA" gamecode="AXPE" size="0x0D"/>
         <offset name="globaloffset" offset="0x0831977C" gamecode="BPEE" size="0x0D"/>
         <offset name="globaloffset" offset="0x08247094" gamecode="BPRE" size="0x0D"/>
