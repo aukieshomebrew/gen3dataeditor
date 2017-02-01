@@ -84,7 +84,7 @@ namespace gen3dataeditor
         public bool ConvertByteArrayToInt32(byte[] array, out Int32 ret)
         {
             
-            if(array.Length > 4)
+            if(array.Length != 4)
             {
                 ret = 0;
                 return false;
@@ -101,7 +101,7 @@ namespace gen3dataeditor
         public bool ConvertByteArrayToInt16(byte[] array, out Int16 ret)
         {
             ret = 0;
-            if(array.Length > 2)
+            if(array.Length != 2)
             {
                 ret = 0;
                 return false;
