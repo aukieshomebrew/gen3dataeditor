@@ -56,7 +56,7 @@ namespace gen3dataeditor
 
         }
 
-        public void SetValueByteArray(string structname, string offsetname, Int32 index, byte[] newvalue)
+        public void SetValueByteArray(string structname, string offsetname, Int32 index, byte[] newvalue, bool isString)
         {
 
             Int32 global = GetGlobalOffsetByGameCode(structname, GetGameCode());
@@ -73,18 +73,19 @@ namespace gen3dataeditor
 
                 binarywriter.BaseStream.Position = pos;
                 binarywriter.Write(newvalue);
-                byte[] zero = new byte[size - (newvalue.Length + 1 )];
-
-
-                binarywriter.BaseStream.Position = pos + newvalue.Length;
-                binarywriter.Write(zero);
+                if(isString)
+                {
+                    byte zero = 0xFF;
+                    binarywriter.BaseStream.Position = pos + newvalue.Length;
+                    binarywriter.Write(zero);
+                }
+              
                 
 
                 
                 
                 
              
-                binarywriter.Flush();
 
             }
 
