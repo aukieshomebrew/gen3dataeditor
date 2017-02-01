@@ -226,5 +226,65 @@ namespace gen3dataeditor
             return str.ToString();
         }
 
+        protected List<string> GetListOfAvailableStructs(string gamecode)
+        {
+            Open();
+            List<string> ret = new List<string>();
+
+            XElement structs = root.Element("structs");
+            IEnumerable < XElement > list = structs.Descendants();
+            bool gamecodematch = false;
+            foreach (XElement element in list)
+            {
+                IEnumerable<XElement> offsets = element.Descendants("offset");
+                
+                foreach(XElement offset in offsets)
+                {
+                    if(offset.Attribute("gamecode").Value == gamecode)
+                    {
+                        gamecodematch = true;
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+
+
+                }
+                if(gamecodematch)
+                {
+                    ret.Add(element.Value);
+                }
+            }
+
+            
+
+            Close();
+            return ret;
+        }
+        protected List<string> GetListOfAvailableOffsets(string structname)
+        {
+            Open();
+            List<string> ret = new List<string>();
+
+            XElement structure = root.Element("structs").Element(structname);
+
+            IEnumerable<XElement> list = structure.Descendants("offset");
+
+            foreach(XElement offset in list)
+            {
+                ret.Add(offset.Attribute("name").Value);
+            }
+
+            return ret;
+
+            Close();
+            return ret;
+
+            
+        }
+
     }
 }

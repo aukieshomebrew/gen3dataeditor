@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -175,6 +176,15 @@ namespace gen3dataeditor
             return GetGameNameByGameCode(GetGameCode());
         }
 
+        public List<string> GetStructList(string gamecode)
+        {
+            return GetListOfAvailableStructs(gamecode);
+        }
+
+        public List<string> GetOffsetList(string structname)
+        {
+            return GetListOfAvailableOffsets(structname);
+        }
 
     }
 

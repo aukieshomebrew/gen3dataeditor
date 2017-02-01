@@ -4,6 +4,7 @@ using CommandLine.Text;
 using System;
 using System.IO;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace gen3dataeditor
 {
@@ -15,6 +16,7 @@ namespace gen3dataeditor
         {
             Options opt = new Options();
             Parser p = new Parser();
+            gen3dataeditor main = new gen3dataeditor();
 
 
 
@@ -41,14 +43,34 @@ namespace gen3dataeditor
             
 
 
+
             game = gamecoder.GetGameName();
+            gamecoder = null;
             if (string.IsNullOrEmpty(game))
             {
                 Console.WriteLine("Game not supported!");
+              
                 return 0;
             }
             Console.WriteLine("Game: {0}", game);
-            gamecoder = null;
+
+            if (opt.ArgListStruct)
+            {
+                main.ListStruct(gamecoder.GetGameCode(), opt);
+               
+                return 0;
+            }
+
+            if(!string.IsNullOrWhiteSpace(opt.ArgListOffsets))
+            {
+                main.ListOffsets(opt.ArgListOffsets, opt);
+
+                return 0;
+               
+            }
+            
+
+
             
 
 
@@ -256,6 +278,38 @@ namespace gen3dataeditor
             Console.WriteLine("Nothing done!");
             return 0;
         }
+
+        public void ListStruct(string gamecode, Options opt)
+        {
+            RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
+
+            List<string> list = romeditor.GetStructList(romeditor.GetGameCode());
+
+            foreach(string str in list)
+            {
+                Console.WriteLine(str);
+            }
+
+            romeditor = null;
+
+        }
+
+        public void ListOffsets(string structname, Options opt)
+        {
+            RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
+
+            List<string> list = romeditor.GetOffsetList(structname);
+
+            foreach (string str in list)
+            {
+                Console.WriteLine(str);
+            }
+
+            romeditor = null;
+
+        }
+
+
     }
 
 
@@ -288,8 +342,15 @@ namespace gen3dataeditor
         [Option("index", HelpText = "Specify index number.", DefaultValue = 1, Required = true)]
         public int ArgIndex { get; set; }
 
-        [Option('x', "print-hex", HelpText = "Print interger as hexnumber", DefaultValue = false, Required = false)]
+        [Option('x', "print-hex", HelpText = "Print integer as hexnumber", DefaultValue = false, Required = false)]
         public bool ArgPrintHex { get; set; }
+
+        [Option("list-structures", HelpText = "List all structures in the data.xml file.")]
+        public bool ArgListStruct { get; set; }
+
+        [Option("list-offsets", HelpText = "List all structures in the data.xml file.")]
+        public string ArgListOffsets{ get; set; }
+
 
         [HelpOption]
         public string GetUsage()
@@ -311,6 +372,7 @@ namespace gen3dataeditor
 
 
         }
+
 
         
 
