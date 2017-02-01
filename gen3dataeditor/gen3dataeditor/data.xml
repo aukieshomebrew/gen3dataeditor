@@ -2,6 +2,8 @@
 
 <!--Created by: Aukie's Homebrew-->
 
+<!--CAUTION: Editing with the wrong offsets could break the ROM.-->
+
 <data>
   <core>
     <game name="Pokemon Ruby (US)" gamecode="AXVE"/>

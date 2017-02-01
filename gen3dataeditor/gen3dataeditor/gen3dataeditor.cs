@@ -2,7 +2,6 @@
 using CommandLine;
 using CommandLine.Text;
 using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace gen3dataeditor
@@ -35,7 +34,21 @@ namespace gen3dataeditor
                 Console.WriteLine("Invalid data XML path.");
                 return 0;
             }
-                
+
+            string game = "";
+            RomEditor gamecoder = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
+            
+
+
+            game = gamecoder.GetGameName();
+            if (string.IsNullOrEmpty(game))
+            {
+                Console.WriteLine("Game not supported!");
+                return 0;
+            }
+            Console.WriteLine("Game: {0}", game);
+            gamecoder = null;
+            
 
 
             if (opt.ArgGetValueString)
@@ -206,7 +219,7 @@ namespace gen3dataeditor
         [Option("struct", HelpText = "Specify structname.", DefaultValue = "itemdatastruct" , Required = true)]
         public string ArgStruct { get; set; }
 
-        [Option("name", HelpText = "Specify offset name", DefaultValue = "name")]
+        [Option("offset", HelpText = "Specify offset name", DefaultValue = "name")]
         public string ArgName { get; set; }
 
 

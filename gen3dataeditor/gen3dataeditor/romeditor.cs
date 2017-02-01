@@ -157,6 +157,11 @@ namespace gen3dataeditor
             return BitConverter.GetBytes(val);
         }
 
+        public string GetGameName()
+        {
+            return GetGameNameByGameCode(GetGameCode());
+        }
+
 
     }
 

@@ -84,6 +84,34 @@ namespace gen3dataeditor
 
             return 0;
         }
+
+        protected string GetGameNameByGameCode(string gamecode)
+        {
+
+            Open();
+            XElement codes = root.Element("core");
+            IEnumerable<XElement> names = codes.Descendants();
+
+            foreach (XElement name in names)
+            {
+                if (name.Attribute("gamecode").Value == gamecode)
+                {
+                    string ret = name.Attribute("name").Value;
+                    Close();
+                    return ret;
+                }
+
+                else
+                {
+                    continue;
+                }
+            }
+
+            Close();
+            return string.Empty;
+        }
+
+
         protected Int16 GetValueOffsetByName(string structname, string offsetname)
         {
             Open();
