@@ -55,7 +55,7 @@ namespace gen3dataeditor
             {
                 RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
                 string line = romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex));
-                Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                 Console.WriteLine("Value: {0}", line);
                 romeditor = null;
                 return 0;
@@ -73,7 +73,7 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                    Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                     Console.WriteLine("Value: {0}", write32);
                     romeditor = null;
                     return 0;
@@ -83,7 +83,7 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                    Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                     Console.WriteLine("Value: {0}", write16);
                     romeditor = null;
                     return 0;
@@ -94,7 +94,7 @@ namespace gen3dataeditor
                 }
                 else
                 {
-                    Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                    Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                     Console.WriteLine("Value: {0}", writebyte);
                     romeditor = null;
                     return 0;
@@ -106,7 +106,7 @@ namespace gen3dataeditor
             {
                 RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
 
-                Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
 
                 Console.WriteLine("Value before: {0}", romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex)));
                 romeditor.SetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex, romeditor.ConvertStringToByteArray(opt.ArgSetValueString));
@@ -117,7 +117,7 @@ namespace gen3dataeditor
             }
             else if (opt.ArgSetValueInt > 0)
             {
-                Console.WriteLine("Not implemented yet.");
+               
                 RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
 
                 Int16 write16 =0;
@@ -126,7 +126,7 @@ namespace gen3dataeditor
 
                 byte[] array = romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex);
 
-                Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                Console.WriteLine("Struct: {0}, Offset: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
                 if(!romeditor.ConvertByteArrayToInt32(array, out write32))
                 {
 
@@ -213,8 +213,6 @@ namespace gen3dataeditor
 
         [Option("set-value-int", HelpText = "Sets value to int", MutuallyExclusiveSet ="set", DefaultValue = -1)]
         public int ArgSetValueInt { get; set; }
-
-
 
         [Option("struct", HelpText = "Specify structname.", DefaultValue = "itemdatastruct" , Required = true)]
         public string ArgStruct { get; set; }

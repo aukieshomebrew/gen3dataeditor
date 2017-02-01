@@ -65,7 +65,7 @@
        
     </pokedexdatastruct>
 
-    <pokedexdatastructe>
+    <pokedexdatastructemerald>
 
       <global>
 
@@ -77,7 +77,7 @@
         <offset name="name_species" offset="0x00" size="0x0C"/>
         <offset name="height" offset="0x0C" size="0x02"/>
         <offset name="weight" offset="0x0E" size="0x02"/>
-        <offset name="desc_pointer_1" offset="0x10" size="0x04"/>
+        <offset name="desc_pointer" offset="0x10" size="0x04"/>
         <offset name="padding" offset="0x14" size="0x02"/>
         <offset name="pokemon_scale" offset="0x18" size="0x02"/>
         <offset name="pokemon_offset" offset="0x1A" size="0x02"/>
@@ -86,7 +86,7 @@
         <offset name="padding" offset="0x20" size="0x02"/>
       </struct>
 
-    </pokedexdatastructe>
+    </pokedexdatastructemerald>
 
 
     <pokemonnamestruct>
