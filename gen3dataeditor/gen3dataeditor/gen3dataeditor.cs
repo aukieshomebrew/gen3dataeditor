@@ -25,49 +25,161 @@ namespace gen3dataeditor
             }
 
             if (!File.Exists(opt.ArgRomFile))
-                return 0;
-            if (!File.Exists(opt.ArgXmlFile))
-                return 0;
-
-            if(opt.ArgGetValue)
             {
-                if(opt.ArgGetValueString)
+                Console.WriteLine("Invalid GBA ROM path.");
+                return 0;
+            }
+                
+            if (!File.Exists(opt.ArgXmlFile))
+            {
+                Console.WriteLine("Invalid data XML path.");
+                return 0;
+            }
+                
+
+
+            if (opt.ArgGetValueString)
+            {
+                RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
+                string line = romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex));
+                Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                Console.WriteLine("Value: {0}", line);
+                romeditor = null;
+                return 0;
+            }
+            else if (opt.ArgGetValueInt)
+            {
+                RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
+
+                Int32 write32 = 0;
+                Int16 write16 = 0;
+                byte writebyte = 0;
+
+                if (!romeditor.ConvertByteArrayToInt32(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex), out write32))
                 {
-                    RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
-                    Console.WriteLine(romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex)));
+                }
+                else
+                {
+                    Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                    Console.WriteLine("Value: {0}", write32);
                     romeditor = null;
                     return 0;
                 }
-                else if(opt.ArgGetValueInt)
+                if (!romeditor.ConvertByteArrayToInt16(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex), out write16))
                 {
-                    Console.WriteLine("Not implemented yet.");
+                }
+                else
+                {
+                    Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                    Console.WriteLine("Value: {0}", write16);
+                    romeditor = null;
                     return 0;
                 }
-            } else if(opt.ArgSetValue)
-            {
-                if(opt.ArgSetValueString != string.Empty)
+                if (!romeditor.ConvertByteArrayToByte(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex), out writebyte))
                 {
-                    Console.WriteLine("Not implemented yet.");
+                    Console.WriteLine("Failed!");
+                }
+                else
+                {
+                    Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                    Console.WriteLine("Value: {0}", writebyte);
+                    romeditor = null;
                     return 0;
                 }
-                else if(opt.ArgSetValueString != string.Empty)
-                {
-                    Console.WriteLine("Not implemented yet.");
-                    return 0;
-                }
-            }
-            
-         
 
+            }
+
+            else if (opt.ArgSetValueString != string.Empty)
+            {
+                RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
+
+                Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+
+                Console.WriteLine("Value before: {0}", romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex)));
+                romeditor.SetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex, romeditor.ConvertStringToByteArray(opt.ArgSetValueString));
+                Console.WriteLine("Value after: {0}", romeditor.ConvertByteArrayToString(romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex)));
+
+                romeditor = null;
+                return 0;
+            }
+            else if (opt.ArgSetValueInt > 0)
+            {
+                Console.WriteLine("Not implemented yet.");
+                RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
+
+                Int16 write16 =0;
+                Int32 write32 =0;
+                byte writebyte =0;
+
+                byte[] array = romeditor.GetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+
+                Console.WriteLine("Struct: {0}, Name: {1}, Index: {2}", opt.ArgStruct, opt.ArgName, opt.ArgIndex);
+                if(!romeditor.ConvertByteArrayToInt32(array, out write32))
+                {
+
+                }
+                else
+                {
+                    Console.Write("Value before: ", write16);
+                }
+                if (!romeditor.ConvertByteArrayToInt16(array, out write16))
+                {
+
+                }
+                else
+                {
+                    Console.Write("Value before: ", write16);
+                }
+                if (!romeditor.ConvertByteArrayToByte(array, out writebyte))
+                {
+
+                }
+                else
+                {
+                    Console.Write("Value before: ", writebyte);
+                }
+
+                romeditor.SetValueByteArray(opt.ArgStruct, opt.ArgName, opt.ArgIndex, romeditor.ConvertIntToByteArray(opt.ArgSetValueInt));
+
+
+                if (!romeditor.ConvertByteArrayToInt32(array, out write32))
+                {
+
+                }
+                else
+                {
+                    Console.Write("Value after: ", write16);
+                }
+                if (!romeditor.ConvertByteArrayToInt16(array, out write16))
+                {
+
+                }
+                else
+                {
+                    Console.Write("Value after: ", write16);
+                }
+                if (!romeditor.ConvertByteArrayToByte(array, out writebyte))
+                {
+
+                }
+                else
+                {
+                    Console.Write("Value after: ", writebyte);
+                }
+
+
+
+
+                return 0;
+            }
+
+
+
+            Console.WriteLine("Nothing done!");
             return 0;
         }
     }
 
-    enum DataType
-    {
-        Int,
-        String
-    }
 
     class Options
     {
@@ -77,22 +189,16 @@ namespace gen3dataeditor
         [Option('d', "xml-file", HelpText = "Path to XML file.", DefaultValue = "data.xml")]
         public string ArgXmlFile { get; set; }
 
-        [Option("set-value", HelpText = "Sets a value.", MutuallyExclusiveSet = "set")]
-        public bool ArgSetValue { get; set; }
-
-        [Option("get-value", HelpText = "Gets a value.", MutuallyExclusiveSet = "get")]
-        public bool ArgGetValue { get; set; }
-
         [Option("get-value-string", HelpText = "Gets a value string.", MutuallyExclusiveSet = "get")]
         public bool ArgGetValueString { get; set; }
 
         [Option("get-value-int", HelpText = "Gets a value integer.", MutuallyExclusiveSet = "get")]
         public bool ArgGetValueInt { get; set; }
 
-        [Option("set-value-int", HelpText = "Sets value to...", MutuallyExclusiveSet ="set")]
+        [Option("set-value-int", HelpText = "Sets value to int", MutuallyExclusiveSet ="set", DefaultValue = -1)]
         public int ArgSetValueInt { get; set; }
 
-        [Option("set-value-string", HelpText = "Sets value to...", MutuallyExclusiveSet = "set")]
+        [Option("set-value-string", HelpText = "Sets value to string", MutuallyExclusiveSet = "set")]
         public string ArgSetValueString { get; set; }
 
         [Option("struct", HelpText = "Specify structname.", DefaultValue = "itemdatastruct" , Required = true)]
@@ -110,7 +216,7 @@ namespace gen3dataeditor
         {
             HelpText help = new HelpText
             {
-                Heading = new HeadingInfo("gen3dataedior", "0.0.1"),
+                Heading = new HeadingInfo("gen3dataedior", "0.1"),
                 Copyright = new CopyrightInfo("Aukie's Homebrew", 2017),
                 AdditionalNewLineAfterOption = true,
                 AddDashesToOption = true

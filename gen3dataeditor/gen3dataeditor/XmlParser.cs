@@ -159,6 +159,7 @@ namespace gen3dataeditor
 
         protected byte GetByteByAscii(char c)
         {
+            Open();
             IEnumerable<XElement> table = root.Element("encoding-table").Descendants("encoding");
 
             
