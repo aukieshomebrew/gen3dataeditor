@@ -65,6 +65,7 @@ namespace gen3dataeditor
             Int32 pos = global + offset + (index * globalsize) - 0x8000000;
             byte[] bytes;
             byte[] empty = new byte[size];
+            byte[] remaining = new byte[size - newvalue.Length];
 
             using (BinaryWriter binarywriter = new BinaryWriter(File.OpenWrite(rompath)))
             {
@@ -74,7 +75,7 @@ namespace gen3dataeditor
 
                 binarywriter.BaseStream.Position = pos;
 
-                binarywriter.Write(newvalue, 0, size);
+                binarywriter.Write(remaining, 0, remaining.Length);
 
             }
 
