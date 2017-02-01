@@ -288,7 +288,7 @@ namespace gen3dataeditor
         {
             RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
 
-            List<string> list = romeditor.GetStructList(romeditor.GetGameCode());
+            List<string> list = romeditor.GetStructList(gamecode);
 
             foreach(string str in list)
             {
