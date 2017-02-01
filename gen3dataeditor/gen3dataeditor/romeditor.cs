@@ -176,9 +176,9 @@ namespace gen3dataeditor
             return GetGameNameByGameCode(GetGameCode());
         }
 
-        public List<string> GetStructList(string gamecode)
+        public List<string> GetStructList()
         {
-            return GetListOfAvailableStructs(gamecode);
+            return GetListOfAvailableStructs();
         }
 
         public List<string> GetOffsetList(string structname)

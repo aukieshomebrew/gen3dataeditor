@@ -26,6 +26,7 @@ namespace gen3dataeditor
                 return 0;
             }
 
+
             if (!File.Exists(opt.ArgRomFile))
             {
                 Console.WriteLine("Invalid GBA ROM path.");
@@ -38,6 +39,18 @@ namespace gen3dataeditor
                 return 0;
             }
 
+            if (opt.ArgListStruct)
+            {
+                main.ListStruct(opt);
+                return 0;
+            }
+
+            if (!string.IsNullOrWhiteSpace(opt.ArgListOffsets))
+            {
+                main.ListOffsets(opt.ArgListOffsets, opt);
+                return 0;
+            }
+
             string game = "";
             RomEditor gamecoder = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
             
@@ -47,7 +60,7 @@ namespace gen3dataeditor
             game = gamecoder.GetGameName();
 
             
-            string gamecodes = gamecoder.GetGameCode();
+          
 
             gamecoder = null;
             
@@ -59,20 +72,7 @@ namespace gen3dataeditor
             }
             Console.WriteLine("Game: {0}", game);
 
-            if (opt.ArgListStruct)
-            {
-                main.ListStruct(gamecodes, opt);
-                
-                return 0;
-            }
 
-            if(!string.IsNullOrWhiteSpace(opt.ArgListOffsets))
-            {
-                main.ListOffsets(opt.ArgListOffsets, opt);
-             
-                return 0;
-               
-            }
 
 
 
@@ -284,18 +284,18 @@ namespace gen3dataeditor
             return 0;
         }
 
-        public void ListStruct(string gamecode, Options opt)
+        public void ListStruct(Options opt)
         {
             RomEditor romeditor = new RomEditor(opt.ArgRomFile, opt.ArgXmlFile);
 
-            List<string> list = romeditor.GetStructList(gamecode);
+            List<string> list = romeditor.GetStructList();
 
             foreach(string str in list)
             {
                 Console.WriteLine(str);
             }
 
-            romeditor = null;
+           
 
         }
 
@@ -310,7 +310,7 @@ namespace gen3dataeditor
                 Console.WriteLine(str);
             }
 
-            romeditor = null;
+      
 
         }
 
@@ -353,7 +353,7 @@ namespace gen3dataeditor
         [Option("list-structures", HelpText = "List all structures in the data.xml file.")]
         public bool ArgListStruct { get; set; }
 
-        [Option("list-offsets", HelpText = "List all structures in the data.xml file.")]
+        [Option("list-offsets", HelpText = "List all offsets in a structure in the data.xml file.")]
         public string ArgListOffsets{ get; set; }
 
 
@@ -362,7 +362,7 @@ namespace gen3dataeditor
         {
             HelpText help = new HelpText
             {
-                Heading = new HeadingInfo("gen3dataedior", "0.1"),
+                Heading = new HeadingInfo("gen3dataedior", "0.2"),
                 Copyright = new CopyrightInfo("Aukie's Homebrew", 2017),
                 AdditionalNewLineAfterOption = true,
                 AddDashesToOption = true

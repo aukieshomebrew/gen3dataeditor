@@ -226,38 +226,27 @@ namespace gen3dataeditor
             return str.ToString();
         }
 
-        protected List<string> GetListOfAvailableStructs(string gamecode)
+        protected List<string> GetListOfAvailableStructs()
         {
-            Open();
             List<string> ret = new List<string>();
-
-            XElement structs = root.Element("structs");
-            IEnumerable < XElement > list = structs.Descendants();
-            bool gamecodematch = false;
-            foreach (XElement element in list)
+            Open();
+            IEnumerable<XElement> structures = root.Element("structs").Descendants();
+ 
+            foreach(XElement structure in structures)
             {
-                IEnumerable<XElement> offsets = element.Descendants("offset");
-                
-                foreach(XElement offset in offsets)
+
+                if(structure.Name.ToString() == "offset" || structure.Name.ToString() == "struct" || structure.Name.ToString() == "global")
                 {
-                    if(offset.Attribute("gamecode").Value == gamecode)
-                    {
-                        gamecodematch = true;
-                        break;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-
-
-
+                    continue;
                 }
-                if(gamecodematch)
+                else
                 {
-                    ret.Add(element.Value);
+                    ret.Add(structure.Name.ToString());
+                    continue;
                 }
             }
+            
+
 
             
 
@@ -266,12 +255,12 @@ namespace gen3dataeditor
         }
         protected List<string> GetListOfAvailableOffsets(string structname)
         {
-            Open();
+            
             List<string> ret = new List<string>();
-
+            Open();
             XElement structure = root.Element("structs").Element(structname);
 
-            IEnumerable<XElement> list = structure.Descendants("offset");
+            IEnumerable<XElement> list = structure.Element("struct").Descendants("offset");
 
             foreach(XElement offset in list)
             {
