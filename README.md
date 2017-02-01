@@ -2,34 +2,34 @@
 Edit all kinds of data in a generation 3 Pokemon GBA ROM.
 
 How to use:
+    gen3dataedior 0.1
+    Copyright (C) 2017 Aukie's Homebrew
+    Usage: gen3dataeditor --rom-file <*.gba> --struct --index [--xml-file <*.xml>]
+    [--get-value-string] [--get-value-int] [--set-value-string <string>]
+    [--set-value-int <integer>]
 
-gen3dataedior 0.1
-Copyright (C) 2017 Aukie's Homebrew
-Usage: gen3dataeditor --rom-file <*.gba> --struct --index [--xml-file <*.xml>]
-[--get-value-string] [--get-value-int] [--set-value-string <string>]
-[--set-value-int <integer>]
+      -f, --rom-file        Required. Path to ROM file.
 
-  -f, --rom-file        Required. Path to ROM file.
+      -d, --xml-file        (Default: data.xml) Path to XML file.
 
-  -d, --xml-file        (Default: data.xml) Path to XML file.
+      --get-value-string    Gets a value string.
 
-  --get-value-string    Gets a value string.
+      --set-value-string    Sets value to string
 
-  --set-value-string    Sets value to string
+      --get-value-int       Gets a value integer.
 
-  --get-value-int       Gets a value integer.
+      --set-value-int       (Default: -1) Sets value to int
 
-  --set-value-int       (Default: -1) Sets value to int
+      --struct              Required. (Default: itemdatastruct) Specify structname.
 
-  --struct              Required. (Default: itemdatastruct) Specify structname.
+      --name                (Default: name) Specify offset name
 
-  --name                (Default: name) Specify offset name
+      --index               Required. (Default: 1) Specify index number.
 
-  --index               Required. (Default: 1) Specify index number.
-
-  --help                Display this help screen.
+      --help                Display this help screen.
+    
   
-  How to compile:
+How to compile:
   
     1. Clone this project in a directory.
     2. Go to the project directory.
