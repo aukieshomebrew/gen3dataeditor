@@ -45,7 +45,7 @@ namespace gen3dataeditor
 
 
             game = gamecoder.GetGameName();
-            gamecoder = null;
+            
             if (string.IsNullOrEmpty(game))
             {
                 Console.WriteLine("Game not supported!");
@@ -57,21 +57,21 @@ namespace gen3dataeditor
             if (opt.ArgListStruct)
             {
                 main.ListStruct(gamecoder.GetGameCode(), opt);
-               
+                gamecoder = null;
                 return 0;
             }
 
             if(!string.IsNullOrWhiteSpace(opt.ArgListOffsets))
             {
                 main.ListOffsets(opt.ArgListOffsets, opt);
-
+                gamecoder = null;
                 return 0;
                
             }
-            
 
 
-            
+
+            gamecoder = null;
 
 
             if (opt.ArgGetValueString)
