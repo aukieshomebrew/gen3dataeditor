@@ -224,7 +224,8 @@ namespace gen3dataeditor
                 AddDashesToOption = true
             };
 
-            help.AddPreOptionsLine("Usage: gen3dataeditor");
+            help.AddPreOptionsLine("Usage: gen3dataeditor --rom-file <*.gba> --struct --index [--xml-file <*.xml>] [--get-value-string] [--get-value-int] [--set-value-string <string>] [--set-value-int <integer>]");
+
             help.AddOptions(this);
 
             return help;
