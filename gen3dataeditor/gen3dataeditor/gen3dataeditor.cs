@@ -333,13 +333,13 @@ namespace gen3dataeditor
         [Option("set-value-int", HelpText = "Sets value to int", MutuallyExclusiveSet ="set", DefaultValue = -1)]
         public int ArgSetValueInt { get; set; }
 
-        [Option("struct", HelpText = "Specify structname.", DefaultValue = "itemdatastruct" , Required = true)]
+        [Option("struct", HelpText = "Specify structname.", DefaultValue = "itemdatastruct" )]
         public string ArgStruct { get; set; }
 
         [Option("offset", HelpText = "Specify offset name", DefaultValue = "name")]
         public string ArgName { get; set; }
 
-        [Option("index", HelpText = "Specify index number.", DefaultValue = 1, Required = true)]
+        [Option("index", HelpText = "Specify index number.", DefaultValue = 1)]
         public int ArgIndex { get; set; }
 
         [Option('x', "print-hex", HelpText = "Print integer as hexnumber", DefaultValue = false, Required = false)]
