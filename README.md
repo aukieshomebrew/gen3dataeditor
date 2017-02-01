@@ -2,7 +2,7 @@
 Edit all kinds of data in a generation 3 Pokemon GBA ROM.
 
 How to use:
-        gen3dataedior 0.1
+        
 
         Usage: gen3dataeditor --rom-file <*.gba> --struct --index [--xml-file <*.xml>]
         [--get-value-string] [--get-value-int] [--set-value-string <string>]
