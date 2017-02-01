@@ -21,7 +21,7 @@
         <offset name="globaloffset" offset="0x083DB028" gamecode="BPRE" size="0x2C"/>
         <offset name="globaloffset" offset="0x083DAE64" gamecode="BPGE" size="0x2C"/> 
       </global>
-      <struct size ="0x2C">
+      <struct>
         <offset name="name"             offset="0x00" size="0x0E"/>
         <offset name="index"            offset="0x0E" size="0x02"/>
         <offset name="price"            offset="0x10" size="0x02"/>
@@ -39,39 +39,71 @@
     </itemdatastruct>
     
     <pokedexdatastruct>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>         
+
+      <global>
+        <offset name="globaloffset" offset="0x083C5564" gamecode="AXVE" size="0x24"/>
+        <offset name="globaloffset" offset="0x083C55BC" gamecode="AXPE" size="0x24"/>
+        <offset name="globaloffset" offset="0x083DB028" gamecode="BPRE" size="0x24"/>
+        <offset name="globaloffset" offset="0x083DAE64" gamecode="BPGE" size="0x24"/>
+      </global>
+
+      <struct size ="0x24">
+        <offset name="name" offset="0x00" size="0x0C"/>
+        <offset name="height" offset="0x0C" size="0x02"/>
+        <offset name="weight" offset="0x0E" size="0x02"/>
+        <offset name="desc_pointer_1" offset="0x10" size="0x04"/>
+        <offset name="desc_pointer_2" offset="0x14" size="0x04"/>
+        <offset name="padding" offset="0x18" size="0x02"/>
+        <offset name="pokemon_scale" offset="0x1A" size="0x02"/>
+        <offset name="pokemon_offset" offset="0x1C" size="0x02"/>
+        <offset name="trainer_scale" offset="0x1E" size="0x02"/>
+        <offset name="trainer_offset" offset="0x20" size="0x02"/>
+        <offset name="padding" offset="0x22" size="0x02"/>
+      </struct>
+       
     </pokedexdatastruct>
 
-    <movedatastruct>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-      <offset name="" offset="" size=""/>
-    </movedatastruct>
+    <pokedexdatastructe>
 
-    <typechartdatastruct>
-      <offset name="" offst="" size=""/>
-      <offset name="" offst="" size=""/>
-      <offset name="" offst="" size=""/>
-    </typechartdatastruct>
-  
+      <global>
+
+        <offset name="globaloffset" offset="0x0856B5B0" gamecode="BPEE" size="0x20"/>
+
+      </global>
+
+      <struct size ="0x20">
+        <offset name="name_species" offset="0x00" size="0x0C"/>
+        <offset name="height" offset="0x0C" size="0x02"/>
+        <offset name="weight" offset="0x0E" size="0x02"/>
+        <offset name="desc_pointer_1" offset="0x10" size="0x04"/>
+        <offset name="padding" offset="0x14" size="0x02"/>
+        <offset name="pokemon_scale" offset="0x18" size="0x02"/>
+        <offset name="pokemon_offset" offset="0x1A" size="0x02"/>
+        <offset name="trainer_scale" offset="0x1C" size="0x02"/>
+        <offset name="trainer_offset" offset="0x1E" size="0x02"/>
+        <offset name="padding" offset="0x20" size="0x02"/>
+      </struct>
+
+    </pokedexdatastructe>
+
+
+    <pokemonnamestruct>
+      <global>
+        <offset name="globaloffset" offset="0x083185C8" gamecode="BPEE" size="0x0B"/>
+      </global>
+      <struct>
+        <offset name="name" offset="0x00" size="0x0B"/>         
+      </struct>
+    </pokemonnamestruct>
+
+    <movenamestruct>
+      <global>
+        <offset name="globaloffset" offset="0x0831977C" gamecode="BPEE" size="0x0D"/>
+      </global>
+      <struct>
+        <offset name="name"  offset="0x00" size="0x0D"/>      
+      </struct>
+    </movenamestruct>
   </structs>
 
   <encoding-table>
