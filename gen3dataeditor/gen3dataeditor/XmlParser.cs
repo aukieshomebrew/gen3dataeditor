@@ -278,7 +278,7 @@ namespace gen3dataeditor
                 ret.Add(offset.Attribute("name").Value);
             }
 
-            return ret;
+            
 
             Close();
             return ret;
