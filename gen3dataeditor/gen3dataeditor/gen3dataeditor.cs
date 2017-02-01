@@ -192,14 +192,16 @@ namespace gen3dataeditor
         [Option("get-value-string", HelpText = "Gets a value string.", MutuallyExclusiveSet = "get")]
         public bool ArgGetValueString { get; set; }
 
+        [Option("set-value-string", HelpText = "Sets value to string", MutuallyExclusiveSet = "set")]
+        public string ArgSetValueString { get; set; }
+
         [Option("get-value-int", HelpText = "Gets a value integer.", MutuallyExclusiveSet = "get")]
         public bool ArgGetValueInt { get; set; }
 
         [Option("set-value-int", HelpText = "Sets value to int", MutuallyExclusiveSet ="set", DefaultValue = -1)]
         public int ArgSetValueInt { get; set; }
 
-        [Option("set-value-string", HelpText = "Sets value to string", MutuallyExclusiveSet = "set")]
-        public string ArgSetValueString { get; set; }
+
 
         [Option("struct", HelpText = "Specify structname.", DefaultValue = "itemdatastruct" , Required = true)]
         public string ArgStruct { get; set; }
