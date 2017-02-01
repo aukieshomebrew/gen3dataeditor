@@ -70,14 +70,14 @@ namespace gen3dataeditor
 
             using (BinaryWriter binarywriter = new BinaryWriter(File.OpenWrite(rompath)))
             {
-                Int32 j = 0;
-                for (Int32 i = pos; i < i + newvalue.Length; i++, j++)
+               
+                for (Int32 i = pos, j = 0; i < i + newvalue.Length; i++, j++)
                 {
                     binarywriter.BaseStream.Position = i;
 
                     binarywriter.Write(newvalue[j]);
                 }
-                byte[] zero = new byte[size - newvalue.Length];
+                byte[] zero = new byte[size - (newvalue.Length + 1 )];
 
 
                 binarywriter.BaseStream.Position = pos + newvalue.Length;
