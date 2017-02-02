@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.button_browse = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.rb_get = new System.Windows.Forms.RadioButton();
@@ -277,6 +278,7 @@
             this.Controls.Add(this.rb_get);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_browse);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
             this.Text = "Gen3RomDataEditor 0.3";
             this.ResumeLayout(false);
