@@ -17,9 +17,10 @@ namespace gen3dataeditorgui
         StringBuilder program;
         public MainWindow()
         {
-            Name = "Gen3RomData Editor 0.2";
-            
+
+           
             InitializeComponent();
+            rb_get.Checked = true;
             tb_rompath.Multiline = false;
             browse = new OpenFileDialog();
             browse.CheckFileExists = true;
