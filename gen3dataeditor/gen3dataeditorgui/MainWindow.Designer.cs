@@ -213,6 +213,7 @@
             this.tb_console.Location = new System.Drawing.Point(314, 12);
             this.tb_console.Multiline = true;
             this.tb_console.Name = "tb_console";
+            this.tb_console.ReadOnly = true;
             this.tb_console.Size = new System.Drawing.Size(307, 222);
             this.tb_console.TabIndex = 18;
             // 
