@@ -65,7 +65,7 @@
 
     </pokedexdatastruct>
 
-    <pokedexdatastructemerald>
+    <pokedexdatastruct_emerald>
 
       <global>
 
@@ -86,7 +86,7 @@
         <offset name="padding" offset="0x20" size="0x02"/>
       </struct>
 
-    </pokedexdatastructemerald>
+    </pokedexdatastruct_emerald>
 
 
     <pokemonnamestruct>

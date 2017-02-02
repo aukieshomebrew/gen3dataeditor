@@ -51,6 +51,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button_liststructs = new System.Windows.Forms.Button();
             this.button_listoffsets = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_browse
@@ -252,11 +253,22 @@
             this.button_listoffsets.UseVisualStyleBackColor = true;
             this.button_listoffsets.Click += new System.EventHandler(this.button_listoffsets_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Enabled = false;
+            this.label7.Location = new System.Drawing.Point(13, 292);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(152, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Created by: Aukie\'s Homebrew";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 346);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.button_listoffsets);
             this.Controls.Add(this.button_liststructs);
             this.Controls.Add(this.label6);
@@ -311,5 +323,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button_liststructs;
         private System.Windows.Forms.Button button_listoffsets;
+        private System.Windows.Forms.Label label7;
     }
 }

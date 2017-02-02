@@ -273,6 +273,7 @@ namespace gen3dataeditorgui
             tb_console.Text = string.Empty;
             Process proc = new Process();
             proc.StartInfo.UseShellExecute = false;
+            
             proc.StartInfo.RedirectStandardOutput = true;
             proc.StartInfo.FileName = "gen3dataeditor.exe";
             
