@@ -40,7 +40,7 @@ namespace gen3dataeditor
             {
                 global = root.Element("structs").Element(structname).Element("global");
             }
-            catch(NullReferenceException e)
+            catch(NullReferenceException)
             {
                 Console.WriteLine("Struct doens't exist, returning 0.");
                 return 0;
@@ -77,7 +77,7 @@ namespace gen3dataeditor
             {
                 global = root.Element("structs").Element(structname).Element("global");
             }
-            catch(NullReferenceException e)
+            catch(NullReferenceException)
             {
                 Console.WriteLine("Struct doens't exist, returning 0.");
                 return 0;
@@ -137,7 +137,7 @@ namespace gen3dataeditor
             {
                 offsets = root.Element("structs").Element(structname).Element("struct").Descendants("offset");
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 Console.WriteLine("Struct doens't exist, returning 0.");
                 return 0;
@@ -171,7 +171,7 @@ namespace gen3dataeditor
             {
                 offsets = root.Element("structs").Element(structname).Element("struct").Descendants("offset");
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 Console.WriteLine("Struct doens't exist, returning 0.");
                 return 0;

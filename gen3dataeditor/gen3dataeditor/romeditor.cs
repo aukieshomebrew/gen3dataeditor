@@ -46,7 +46,16 @@ namespace gen3dataeditor
             Int32 pos = global + offset + (index * globalsize) - 0x8000000;
             using (BinaryReader binaryreader = new BinaryReader(File.OpenRead(rompath)))
             {
-                binaryreader.BaseStream.Seek(pos, SeekOrigin.Begin);
+                try
+                {
+                    binaryreader.BaseStream.Seek(pos, SeekOrigin.Begin);
+                }
+                catch (IOException)
+                {
+                    Console.WriteLine("Failed to find memory address");
+                    return new byte[0];
+                }
+                
                 ret = binaryreader.ReadBytes(size);
                 
 
@@ -72,7 +81,15 @@ namespace gen3dataeditor
             using (BinaryWriter binarywriter = new BinaryWriter(File.OpenWrite(rompath)))
             {
 
-                binarywriter.BaseStream.Position = pos;
+                try
+                {
+                    binarywriter.BaseStream.Seek(pos, SeekOrigin.Begin);
+                }
+                catch (IOException)
+                {
+                    Console.WriteLine("Failed to find memory address");
+                    return;
+                }
                 binarywriter.Write(newvalue);
                 if(isString)
                 {
