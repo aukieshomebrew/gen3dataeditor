@@ -291,10 +291,19 @@ namespace gen3dataeditor
         }
         protected List<string> GetListOfAvailableOffsets(string structname)
         {
-            
+            XElement structure;
             List<string> ret = new List<string>();
             Open();
-            XElement structure = root.Element("structs").Element(structname);
+            try
+            {
+                structure = root.Element("structs").Element(structname);
+            }
+            catch(NullReferenceException)
+            {
+                Console.WriteLine("Struct doesn't exist!");
+                return new List<string>();
+            }
+            
 
             IEnumerable<XElement> list = structure.Element("struct").Descendants("offset");
 
