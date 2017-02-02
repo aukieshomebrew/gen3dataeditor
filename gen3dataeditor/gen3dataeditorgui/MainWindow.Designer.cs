@@ -156,6 +156,7 @@
             this.cb_printhex.TabIndex = 11;
             this.cb_printhex.Text = "Print hex";
             this.cb_printhex.UseVisualStyleBackColor = true;
+            this.cb_printhex.CheckedChanged += new System.EventHandler(this.cb_printhex_CheckedChanged);
             // 
             // tb_structname
             // 

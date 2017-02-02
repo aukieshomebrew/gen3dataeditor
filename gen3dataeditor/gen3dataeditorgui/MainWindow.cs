@@ -282,5 +282,19 @@ namespace gen3dataeditorgui
 
             tb_console.Text = proc.StandardOutput.ReadToEnd();
         }
+
+        private void cb_printhex_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cb_printhex.Checked)
+            {
+                cb_isstring.Checked = false;
+                cb_isstring.Enabled = false;
+            }
+            else
+            {
+                cb_isstring.Enabled = true;
+            }
+            
+        }
     }
 }
