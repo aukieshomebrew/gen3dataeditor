@@ -34,9 +34,17 @@ namespace gen3dataeditor
         protected Int32 GetGlobalOffsetByGameCode(string structname, string gamecode)
         {
             Open();
+            XElement global;
 
-            
-            XElement global = root.Element("structs").Element(structname).Element("global");
+            try
+            {
+                global = root.Element("structs").Element(structname).Element("global");
+            }
+            catch(NullReferenceException e)
+            {
+                Console.WriteLine("Struct doens't exist, returning 0.");
+                return 0;
+            }
             
             IEnumerable<XElement> offsets = global.Descendants("offset");
             foreach(XElement offset in offsets)
@@ -63,8 +71,17 @@ namespace gen3dataeditor
         {
             Open();
 
-            
-            XElement global = root.Element("structs").Element(structname).Element("global");
+
+            XElement global;
+            try
+            {
+                global = root.Element("structs").Element(structname).Element("global");
+            }
+            catch(NullReferenceException e)
+            {
+                Console.WriteLine("Struct doens't exist, returning 0.");
+                return 0;
+            }
 
             IEnumerable<XElement> offsets = global.Descendants("offset");
             foreach (XElement offset in offsets)
@@ -115,7 +132,17 @@ namespace gen3dataeditor
         protected Int16 GetValueOffsetByName(string structname, string offsetname)
         {
             Open();
-            IEnumerable<XElement> offsets = root.Element("structs").Element(structname).Element("struct").Descendants("offset");
+            IEnumerable<XElement> offsets;
+            try
+            {
+                offsets = root.Element("structs").Element(structname).Element("struct").Descendants("offset");
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Struct doens't exist, returning 0.");
+                return 0;
+            }
+            
             foreach (XElement offset in offsets)
             {
                 if(offset.Attribute("name").Value == offsetname)
@@ -139,7 +166,16 @@ namespace gen3dataeditor
         protected Int16 GetValueSizeByName(string structname, string offsetname)
         {
             Open();
-            IEnumerable<XElement> offsets = root.Element("structs").Element(structname).Element("struct").Descendants("offset");
+            IEnumerable<XElement> offsets;
+            try
+            {
+                offsets = root.Element("structs").Element(structname).Element("struct").Descendants("offset");
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Struct doens't exist, returning 0.");
+                return 0;
+            }
             foreach (XElement offset in offsets)
             {
                 if (offset.Attribute("name").Value == offsetname)
