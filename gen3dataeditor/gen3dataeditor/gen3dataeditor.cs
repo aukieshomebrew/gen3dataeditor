@@ -420,7 +420,7 @@ namespace gen3dataeditor
         [Option("index", HelpText = "Specify index number.", DefaultValue = 1)]
         public int ArgIndex { get; set; }
 
-        [Option('x', "print-hex", HelpText = "Print integer as hexnumber", DefaultValue = false, Required = false)]
+        [Option('x', "print-hex", HelpText = "Print integer as hexnumber", Required = false)]
         public bool ArgPrintHex { get; set; }
 
         [Option("list-structs", HelpText = "List all structs in the data.xml file.")]
@@ -438,7 +438,7 @@ namespace gen3dataeditor
         {
             HelpText help = new HelpText
             {
-                Heading = new HeadingInfo("gen3dataedior", "0.2"),
+                Heading = new HeadingInfo("gen3dataedior", "0.3"),
                 Copyright = new CopyrightInfo("Aukie's Homebrew", 2017),
                 AdditionalNewLineAfterOption = true,
                 AddDashesToOption = true

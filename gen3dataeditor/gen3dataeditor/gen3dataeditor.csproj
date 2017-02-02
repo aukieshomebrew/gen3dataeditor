@@ -42,7 +42,9 @@
     <Compile Include="XmlParser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data.xml" />
+    <Content Include="data.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CommandLine, Version=1.9.71.2, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
@@ -54,6 +56,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y $(ProjectDir)data.xml $(ProjectDir)$(OutDir)</PostBuildEvent>
+    <PostBuildEvent>xcopy /y  $(ProjectDir)data.xml $(SolutionDir)bin
+
+xcopy /y /e $(ProjectDir)$(OutDir)* $(SolutionDir)bin</PostBuildEvent>
   </PropertyGroup>
 </Project>
