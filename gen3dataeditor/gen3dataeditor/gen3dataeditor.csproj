@@ -56,8 +56,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y  $(ProjectDir)data.xml $(SolutionDir)bin
+    <PostBuildEvent>xcopy /y $(ProjectDir)data.xml $(SolutionDir)bin
 
-xcopy /y /e $(ProjectDir)$(OutDir)* $(SolutionDir)bin</PostBuildEvent>
+xcopy /y $(ProjectDir)$(OutDir)* $(SolutionDir)bin</PostBuildEvent>
   </PropertyGroup>
 </Project>
