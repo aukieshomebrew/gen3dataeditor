@@ -90,8 +90,14 @@ namespace gen3dataeditor
                     Console.WriteLine("Failed to find memory address");
                     return;
                 }
+                byte[] empty = new byte[size];
+
+
+                binarywriter.Write(empty);
+                binarywriter.BaseStream.Seek(pos, SeekOrigin.Begin);
                 binarywriter.Write(newvalue);
-                if(isString)
+
+                if (isString)
                 {
                     byte zero = 0xFF;
                     binarywriter.BaseStream.Position = pos + newvalue.Length;
